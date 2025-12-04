@@ -1,0 +1,9 @@
+{
+  "name": "feature-dev",
+  "description": "Plugin for split features and development support",
+  "version": "0.0.1",
+  "author": {
+    "name": "pengcheng",
+    "email": "pengcheng.cao@z.ai"
+  }
+}
