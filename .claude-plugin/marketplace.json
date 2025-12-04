@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "zai-coding-plugins",
+  "version": "0.0.1",
+  "description": "A collection of plugins developed by Z.ai to enhance coding productivity and workflows.",
+  "owner": {
+    "name": "Z.ai Team",
+    "email": "user_feedback@z.ai"
+  },
+  "plugins": [
+    {
+      "name": "feature-dev",
+      "source": "./plugins/feature-dev",
+      "category": "development",
+      "description": "Streamline feature development with automated spilt feature, development support."
+    }
+  ]
+}
