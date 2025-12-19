@@ -6,10 +6,10 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 
 ## 可用插件
 
-| 插件 | 描述 | 命令 |
-|------|------|------|
-| **glm-plan-usage** | 查询 GLM Coding Plan 的配额和使用统计 | `/glm-plan-usage:usage-query` |
-| **glm-plan-bug** | 提交 GLM Coding Plan 的反馈和问题报告 | `/glm-plan-bug:case-feedback` |
+| 插件 | 描述 |
+|------|------|
+| **glm-plan-usage** | 查询 GLM Coding Plan 的配额和使用统计 |
+| **glm-plan-bug** | 提交 GLM Coding Plan 的反馈和问题报告 |
 
 ## 前置要求
 
@@ -25,7 +25,7 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 1. 安装插件市场
 
 ```shell
-claude plugin marketplace add zai-org/zai-cc
+claude plugin marketplace add zai-org/zai-coding-plugins
 ```
 
 2. 从插件市场安装插件

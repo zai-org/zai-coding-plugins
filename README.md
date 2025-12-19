@@ -6,10 +6,10 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 
 ## Available Plugins
 
-| Plugin | Description                                              | Command |
-|--------|----------------------------------------------------------|---------|
-| **glm-plan-usage** | Query quota and usage statistics for GLM Coding Plan     | `/glm-plan-usage:usage-query` |
-| **glm-plan-bug** | Submit case feedback and bug reports for GLM Coding Plan | `/glm-plan-bug:case-feedback` |
+| Plugin | Description                                            | 
+|--------|--------------------------------------------------------|
+| **glm-plan-usage** | Query quota and usage statistics for GLM Coding Plan   |
+| **glm-plan-bug** | Submit case feedback and bug reports for GLM Coding Plan |
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 1. Install the Marketplace
 
 ```shell
-claude plugin marketplace add zai-org/zai-cc
+claude plugin marketplace add zai-org/zai-coding-plugins
 ```
 
 2. Install Plugins from the Marketplace
