@@ -1,0 +1,9 @@
+{
+  "name": "glm-plan-deploy",
+  "description": "deploy current folder for GLM Coding Plan users",
+  "version": "0.0.1",
+  "author": {
+    "name": "mingyi.yuan",
+    "email": "mingyi.yuan@z.ai"
+  }
+}

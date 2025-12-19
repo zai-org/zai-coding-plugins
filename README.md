@@ -1,36 +1,89 @@
-## Z.ai Coding Plugins Marketplace
+# Z.ai Coding Plugins Marketplace
 
-A collection of plugins developed by Z.ai to enhance coding productivity and workflows.
+[中文文档](./README_CN.md)
 
-## Installation
+A collection of plugins to enhance coding productivity and provide GLM Coding Plan relate service for Claude Code.
 
-These plugins can be installed in your Claude Code environment. To use them in your own projects:
+## Available Plugins
 
-1. Install Claude Code globally:
-```bash
-npm install -g @anthropic-ai/claude-code
+| Plugin | Description                                              | Command |
+|--------|----------------------------------------------------------|---------|
+| **glm-plan-usage** | Query quota and usage statistics for GLM Coding Plan     | `/glm-plan-usage:usage-query` |
+| **glm-plan-bug** | Submit case feedback and bug reports for GLM Coding Plan | `/glm-plan-bug:case-feedback` |
+
+## Prerequisites
+
+- Node.js 18 or higher
+- Install Claude Code CLI
+
+## Quick Start
+
+> Install the marketplace within Claude Code to access the plugins.
+
+### Method A
+
+1. Install the Marketplace
+
+```shell
+claude plugin marketplace add zai-org/zai-cc
 ```
 
-2. Navigate to your project and run Claude Code:
+2. Install Plugins from the Marketplace
+
+```shell
+claude plugin install glm-plan-usage@zai-coding-plugins
+```
+
+```shell
+claude plugin install glm-plan-bug@zai-coding-plugins
+```
+
+### Method B
+
+Run the `npx @z_ai/coding-helper` tool to manage and install the plugins directly.
+
+`Start` -> `Coding Tool` -> `Claude Code` -> `Plugin Marketplace`
+
+### Using the Plugins
+
+1. Navigate to your project and start Claude Code:
+
 ```bash
 claude
 ```
 
-3. Add this marketplace to dev
-
-In your Claude Code Interactive session:
-```bash
-/plugin marketplace add zai-cc
-```
-
-4. Use the `/plugin` command to install specific plugins from the Z.ai Coding Plugins marketplace.
+2. Use the installed plugins with the following commands:
 
 ```bash
-/plugin install feature-dev@zai-coding-plugins
+/glm-plan-usage:usage-query
 ```
-
-5. Use the plugin commands as documented in each plugin's README.
 
 ```bash
-/feature-dev:ft_feature Build a blog website with user authentication, post creation, and comments
+/glm-plan-bug:case-feedback Your feedback message here
 ```
+
+## Usage Examples
+
+### Query GLM Coding Plan Usage Statistics
+
+Check your current quota and usage:
+
+```bash
+/glm-plan-usage:usage-query
+```
+
+### Submit GLM Coding Plan Feedback
+
+Report issues or provide feedback:
+
+```bash
+/glm-plan-bug:case-feedback I have an issue with my plan
+```
+
+## Contributing
+
+We welcome contributions! Please feel free to submit issues or pull requests.
+
+## License
+
+Apache License 2.0

@@ -1,0 +1,54 @@
+# Dependencies
+/node_modules/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Build output
+/dist/
+/.next/
+/out/
+
+# Environment variables
+#/.env
+#/.env.*
+
+# NPM
+.npmrc
+.npmrc.*
+.npm
+
+# IDE
+.idea/
+.vscode/
+.cursor/
+
+/.tmp/
+
+*.sublime-*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# vercel
+.vercel
+
+/.deploy/
+/.edgeone/
+/edgeone.json
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# test
+/coverage
+
+.git/

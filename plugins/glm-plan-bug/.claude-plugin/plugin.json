@@ -1,0 +1,9 @@
+{
+  "name": "glm-plan-bug",
+  "description": "Submit case feedback and bug reports for GLM Coding Plan service",
+  "version": "0.0.1",
+  "author": {
+    "name": "gongchao",
+    "email": "chao.gong@z.ai"
+  }
+}

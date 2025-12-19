@@ -1,0 +1,9 @@
+{
+  "name": "glm-plan-usage",
+  "description": "Query quota and usage statistics for GLM Coding Plan service",
+  "version": "0.0.1",
+  "author": {
+    "name": "gongchao",
+    "email": "chao.gong@z.ai"
+  }
+}
