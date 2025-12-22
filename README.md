@@ -6,10 +6,10 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 
 ## Available Plugins
 
-| Plugin | Description                                            | 
-|--------|--------------------------------------------------------|
-| **glm-plan-usage** | Query quota and usage statistics for GLM Coding Plan   |
-| **glm-plan-bug** | Submit case feedback and bug reports for GLM Coding Plan |
+| Plugin               | Description                                                           | 
+|----------------------|-----------------------------------------------------------------------|
+| **glm-plan-usage**   | Query quota and usage statistics for GLM Coding Plan                  |
+| **glm-plan-bug**     | Submit case feedback and bug reports for GLM Coding Plan              |
 
 ## Prerequisites
 
