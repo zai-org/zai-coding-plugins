@@ -22,6 +22,8 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 
 ### 方式一
 
+> 前置要求：已配置 Git 环境。
+
 1. 安装插件市场
 
 ```shell
