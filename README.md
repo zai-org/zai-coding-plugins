@@ -22,6 +22,8 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 
 ### Method A
 
+> Prerequisite: Git environment is set up.
+
 1. Install the Marketplace
 
 ```shell
