@@ -11,6 +11,8 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 | **glm-plan-usage**  | 查询 GLM Coding Plan 的配额和使用统计        |
 | **glm-plan-bug**    | 提交 GLM Coding Plan 的反馈和问题报告        |
 
+**注意:** **glm-plan-bug** 会总结您当前对话的上下文信息以帮助定位问题，若不想上报信息，请误主动使用此插件。
+
 ## 前置要求
 
 - Node.js 18 或更高版本
@@ -64,23 +66,7 @@ claude
 /glm-plan-bug:case-feedback 在此输入你的反馈
 ```
 
-## 使用示例
-
-### 查询 GLM Coding Plan 使用统计
-
-查看当前配额和使用情况：
-
-```bash
-/glm-plan-usage:usage-query
-```
-
-### 提交 GLM Coding Plan 反馈
-
-报告问题或提供反馈：
-
-```bash
-/glm-plan-bug:case-feedback 我的套餐遇到了一个问题
-```
+**注意:** **glm-plan-bug** 会总结您当前对话的上下文信息以帮助定位问题，若不想上报信息，请误主动使用此插件。
 
 ## 贡献
 

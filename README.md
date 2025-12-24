@@ -11,6 +11,8 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 | **glm-plan-usage**   | Query quota and usage statistics for GLM Coding Plan                  |
 | **glm-plan-bug**     | Submit case feedback and bug reports for GLM Coding Plan              |
 
+**Attention:** **glm-plan-bug** will summarize your current conversation context to help identify issues. If you do not want to report this information, please do not actively use this plugin.
+
 ## Prerequisites
 
 - Node.js 18 or higher
@@ -64,23 +66,7 @@ claude
 /glm-plan-bug:case-feedback Your feedback message here
 ```
 
-## Usage Examples
-
-### Query GLM Coding Plan Usage Statistics
-
-Check your current quota and usage:
-
-```bash
-/glm-plan-usage:usage-query
-```
-
-### Submit GLM Coding Plan Feedback
-
-Report issues or provide feedback:
-
-```bash
-/glm-plan-bug:case-feedback I have an issue with my plan
-```
+**Attention:** **glm-plan-bug** will summarize your current conversation context to help identify issues. If you do not want to report this information, please do not actively use this plugin.
 
 ## Contributing
 
