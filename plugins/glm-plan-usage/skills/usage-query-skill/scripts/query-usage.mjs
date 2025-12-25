@@ -83,7 +83,32 @@ const endtime = formatDateTime(endDate);
 
 // Properly encode query parameters
 const queryParams = `?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endtime)}`;
-const queryUsage = (apiUrl, label, appendQueryParams = true) => {
+
+const processQuotaLimit = (data) => {
+  if (!data || !data.limits) return data;
+  
+  data.limits = data.limits.map(item => {
+    if (item.type === 'TOKENS_LIMIT') {
+      return {
+        type: 'Token usage(5 Hour)',
+        percentage: item.percentage
+      };
+    }
+    if (item.type === 'TIME_LIMIT') {
+      return {
+        type: 'MCP usage(1 Month)',
+        percentage: item.percentage,
+        currentUsage: item.currentValue,
+        totol: item.usage,
+        usageDetails: item.usageDetails
+      };
+    }
+    return item;
+  });
+  return data;
+};
+
+const queryUsage = (apiUrl, label, appendQueryParams = true, postProcessor = null) => {
   return new Promise((resolve, reject) => {
     const parsedUrl = new URL(apiUrl);
     const options = {
@@ -115,11 +140,11 @@ const queryUsage = (apiUrl, label, appendQueryParams = true) => {
 
         try {
           const json = JSON.parse(data);
-          if (json.data) {
-            console.log(JSON.stringify(json.data));
-          } else {
-            console.log(JSON.stringify(json, null, 2));
+          let outputData = json.data || json;
+          if (postProcessor && json.data) {
+            outputData = postProcessor(json.data);
           }
+          console.log(JSON.stringify(outputData));
         } catch (e) {
           console.log('Response body:');
           console.log(data);
@@ -141,7 +166,7 @@ const queryUsage = (apiUrl, label, appendQueryParams = true) => {
 const run = async () => {
   await queryUsage(modelUsageUrl, 'Model usage');
   await queryUsage(toolUsageUrl, 'Tool usage');
-  await queryUsage(quotaLimitUrl, 'Quota limit', false);
+  await queryUsage(quotaLimitUrl, 'Quota limit', false, processQuotaLimit);
 };
 
 run().catch((error) => {
