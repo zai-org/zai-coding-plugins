@@ -1,0 +1,15 @@
+{
+  "name": "zai-quota-hud",
+  "description": "Display ZAI/GLM Coding Plan quota usage in the Claude Code statusline with a color-coded progress bar",
+  "version": "1.0.0",
+  "author": {
+    "name": "n1majne3",
+    "url": "https://github.com/n1majne3"
+  },
+  "commands": [
+    "./commands/setup.md",
+    "./commands/quota.md"
+  ],
+  "license": "MIT",
+  "keywords": ["zai", "zhipu", "glm", "quota", "statusline", "claude-code"]
+}

@@ -10,6 +10,7 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 |---------------------|------------------------------------|
 | **glm-plan-usage**  | 查询 GLM Coding Plan 的配额和使用统计        |
 | **glm-plan-bug**    | 提交 GLM Coding Plan 的反馈和问题报告        |
+| **zai-quota-hud**   | 在状态栏显示配额使用量，带颜色编码进度条         |
 
 **注意:** **glm-plan-bug** 会总结您当前对话的上下文信息以帮助定位问题，若不想上报信息，请勿主动使用此插件。
 
@@ -42,6 +43,10 @@ claude plugin install glm-plan-usage@zai-coding-plugins
 claude plugin install glm-plan-bug@zai-coding-plugins
 ```
 
+```shell
+claude plugin install zai-quota-hud@zai-coding-plugins
+```
+
 ### 方式二
 
 运行 `npx @z_ai/coding-helper` 工具直接管理和安装插件。
@@ -64,6 +69,14 @@ claude
 
 ```bash
 /glm-plan-bug:case-feedback 在此输入你的反馈
+```
+
+```bash
+/zai-quota-hud:setup
+```
+
+```bash
+/zai-quota-hud:quota
 ```
 
 **注意:** **glm-plan-bug** 会总结您当前对话的上下文信息以帮助定位问题，若不想上报信息，请勿主动使用此插件。
