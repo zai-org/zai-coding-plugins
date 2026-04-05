@@ -19,6 +19,12 @@
       "source": "./plugins/glm-plan-bug",
       "category": "development",
       "description": "Submit case feedback and bug reports for GLM Coding Plan service."
+    },
+    {
+      "name": "zai-quota-hud",
+      "source": "./plugins/zai-quota-hud",
+      "category": "monitoring",
+      "description": "Display ZAI/GLM Coding Plan quota usage in the Claude Code statusline with a color-coded progress bar, automatic color changes, and reset countdown."
     }
   ]
 }

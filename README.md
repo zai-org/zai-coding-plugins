@@ -10,6 +10,7 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 |----------------------|-----------------------------------------------------------------------|
 | **glm-plan-usage**   | Query quota and usage statistics for GLM Coding Plan                  |
 | **glm-plan-bug**     | Submit case feedback and bug reports for GLM Coding Plan              |
+| **zai-quota-hud**    | Display quota usage in the statusline with color-coded progress bar   |
 
 **Attention:** **glm-plan-bug** will summarize your current conversation context to help identify issues. If you do not want to report this information, please do not actively use this plugin.
 
@@ -42,6 +43,10 @@ claude plugin install glm-plan-usage@zai-coding-plugins
 claude plugin install glm-plan-bug@zai-coding-plugins
 ```
 
+```shell
+claude plugin install zai-quota-hud@zai-coding-plugins
+```
+
 ### Method B
 
 Run the `npx @z_ai/coding-helper` tool to manage and install the plugins directly.
@@ -64,6 +69,14 @@ claude
 
 ```bash
 /glm-plan-bug:case-feedback Your feedback message here
+```
+
+```bash
+/zai-quota-hud:setup
+```
+
+```bash
+/zai-quota-hud:quota
 ```
 
 **Attention:** **glm-plan-bug** will summarize your current conversation context to help identify issues. If you do not want to report this information, please do not actively use this plugin.
