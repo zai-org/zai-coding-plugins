@@ -1,33 +1,57 @@
 #!/usr/bin/env node
 
 /**
- * Usage query script.
- * Determines whether to call the Z.ai or ZHIPU endpoint based on ANTHROPIC_BASE_URL
- * and authenticates with ANTHROPIC_AUTH_TOKEN.
+ * Usage query script for GLM Coding Plan.
+ * Reads config from ~/.glm-config (no env vars needed).
+ *
+ * ~/.glm-config format:
+ *   ANTHROPIC_AUTH_TOKEN=***
+ *   ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
  */
 
 import https from 'https';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 
-// Read environment variables
-const baseUrl = process.env.ANTHROPIC_BASE_URL || '';
-const authToken = process.env.ANTHROPIC_AUTH_TOKEN || '';
+// Force Asia/Shanghai timezone — all API responses use Beijing time.
+process.env.TZ = 'Asia/Shanghai';
 
-if (!authToken) {
-  console.error('Error: ANTHROPIC_AUTH_TOKEN is not set');
-  console.error('');
-  console.error('Set the environment variable and retry:');
-  console.error('  export ANTHROPIC_AUTH_TOKEN="your-token-here"');
+// Read config from ~/.glm-config
+const configPath = path.join(os.homedir(), '.glm-config');
+
+let authToken = '';
+let baseUrl = '';
+
+try {
+  const configContent = fs.readFileSync(configPath, 'utf-8');
+  for (const line of configContent.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIndex = trimmed.indexOf('=');
+    if (eqIndex === -1) continue;
+    const key = trimmed.slice(0, eqIndex).trim();
+    const value = trimmed.slice(eqIndex + 1).trim();
+    if (key === 'ANTHROPIC_AUTH_TOKEN') authToken = value;
+    if (key === 'ANTHROPIC_BASE_URL') baseUrl = value;
+  }
+} catch (err) {
+  console.error('Error: Cannot read config file:', configPath);
+  console.error(err.message);
   process.exit(1);
 }
 
-// Validate ANTHROPIC_BASE_URL
+// Also allow env vars to override config file
+authToken = process.env.ANTHROPIC_AUTH_TOKEN || authToken;
+baseUrl = process.env.ANTHROPIC_BASE_URL || baseUrl;
+
+if (!authToken) {
+  console.error('Error: ANTHROPIC_AUTH_TOKEN is not set in ~/.glm-config or environment');
+  process.exit(1);
+}
+
 if (!baseUrl) {
-  console.error('Error: ANTHROPIC_BASE_URL is not set');
-  console.error('');
-  console.error('Set the environment variable and retry:');
-  console.error('  export ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic"');
-  console.error('  or');
-  console.error('  export ANTHROPIC_BASE_URL="https://open.bigmodel.cn/api/anthropic"');
+  console.error('Error: ANTHROPIC_BASE_URL is not set in ~/.glm-config or environment');
   process.exit(1);
 }
 
@@ -37,7 +61,6 @@ let modelUsageUrl;
 let toolUsageUrl;
 let quotaLimitUrl;
 
-// Extract the base domain from ANTHROPIC_BASE_URL
 const parsedBaseUrl = new URL(baseUrl);
 const baseDomain = `${parsedBaseUrl.protocol}//${parsedBaseUrl.host}`;
 
@@ -62,6 +85,7 @@ if (baseUrl.includes('api.z.ai')) {
 
 console.log(`Platform: ${platform}`);
 console.log('');
+
 // Time window: from yesterday at the current hour (HH:00:00) to today at the current hour end (HH:59:59).
 const now = new Date();
 const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1, now.getHours(), 0, 0, 0);
@@ -84,31 +108,7 @@ const endtime = formatDateTime(endDate);
 // Properly encode query parameters
 const queryParams = `?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endtime)}`;
 
-const processQuotaLimit = (data) => {
-  if (!data || !data.limits) return data;
-  
-  data.limits = data.limits.map(item => {
-    if (item.type === 'TOKENS_LIMIT') {
-      return {
-        type: 'Token usage(5 Hour)',
-        percentage: item.percentage
-      };
-    }
-    if (item.type === 'TIME_LIMIT') {
-      return {
-        type: 'MCP usage(1 Month)',
-        percentage: item.percentage,
-        currentUsage: item.currentValue,
-        totol: item.usage,
-        usageDetails: item.usageDetails
-      };
-    }
-    return item;
-  });
-  return data;
-};
-
-const queryUsage = (apiUrl, label, appendQueryParams = true, postProcessor = null) => {
+const queryUsage = (apiUrl, label, appendQueryParams = true) => {
   return new Promise((resolve, reject) => {
     const parsedUrl = new URL(apiUrl);
     const options = {
@@ -140,10 +140,7 @@ const queryUsage = (apiUrl, label, appendQueryParams = true, postProcessor = nul
 
         try {
           const json = JSON.parse(data);
-          let outputData = json.data || json;
-          if (postProcessor && json.data) {
-            outputData = postProcessor(json.data);
-          }
+          const outputData = json.data || json;
           console.log(JSON.stringify(outputData));
         } catch (e) {
           console.log('Response body:');
@@ -166,7 +163,7 @@ const queryUsage = (apiUrl, label, appendQueryParams = true, postProcessor = nul
 const run = async () => {
   await queryUsage(modelUsageUrl, 'Model usage');
   await queryUsage(toolUsageUrl, 'Tool usage');
-  await queryUsage(quotaLimitUrl, 'Quota limit', false, processQuotaLimit);
+  await queryUsage(quotaLimitUrl, 'Quota limit', false);
 };
 
 run().catch((error) => {
