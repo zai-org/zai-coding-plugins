@@ -10,7 +10,7 @@ import https from 'https';
 
 // Read environment variables
 const baseUrl = process.env.ANTHROPIC_BASE_URL || '';
-const authToken = process.env.ANTHROPIC_AUTH_TOKEN || '';
+const authToken = process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_API_KEY || '';
 
 if (!authToken) {
   console.error('Error: ANTHROPIC_AUTH_TOKEN is not set');
