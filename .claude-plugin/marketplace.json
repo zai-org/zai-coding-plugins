@@ -19,6 +19,15 @@
       "source": "./plugins/glm-plan-bug",
       "category": "development",
       "description": "Submit case feedback and bug reports for GLM Coding Plan service."
+    },
+    {
+      "name": "version-sentinel",
+      "source": {
+        "source": "github",
+        "repo": "KSEGIT/Version-Sentinel"
+      },
+      "category": "security",
+      "description": "Hard-blocks dependency additions and version changes until a fresh, source-cited version check is recorded. Supports npm, pip, Poetry/uv, Cargo, and NuGet."
     }
   ]
 }
