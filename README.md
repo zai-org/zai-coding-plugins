@@ -10,6 +10,7 @@ A collection of plugins to enhance coding productivity and provide GLM Coding Pl
 |----------------------|-----------------------------------------------------------------------|
 | **glm-plan-usage**   | Query quota and usage statistics for GLM Coding Plan                  |
 | **glm-plan-bug**     | Submit case feedback and bug reports for GLM Coding Plan              |
+| **aeon**             | Set up and run your own Aeon autonomous agent instance               |
 
 **Attention:** **glm-plan-bug** will summarize your current conversation context to help identify issues. If you do not want to report this information, please do not actively use this plugin.
 

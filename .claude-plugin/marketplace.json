@@ -19,6 +19,16 @@
       "source": "./plugins/glm-plan-bug",
       "category": "development",
       "description": "Submit case feedback and bug reports for GLM Coding Plan service."
+    },
+    {
+      "name": "aeon",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/aeonfun/aeon.git",
+        "path": "plugin"
+      },
+      "category": "productivity",
+      "description": "Set up and run your own Aeon autonomous agent instance - enable, schedule, edit, and debug skills that run on GitHub Actions."
     }
   ]
 }
