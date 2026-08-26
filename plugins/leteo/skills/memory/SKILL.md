@@ -23,7 +23,7 @@ are present from the first message — no `ToolSearch` needed.
 Only the three that change or count the whole store are deferred; reach for
 `ToolSearch` when you need one: `mem_stats`, `mem_delete`, `mem_merge_projects`.
 
-**If the tools are missing**, run `leteo setup zcode` and restart the
+**If the tools are missing**, run `leteo setup claude-code` and restart the
 client. Verify the store itself with `leteo doctor`.
 
 ## PROACTIVE SAVE TRIGGERS (mandatory — do NOT wait to be asked)

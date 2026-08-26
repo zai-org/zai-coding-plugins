@@ -1,5 +1,5 @@
 {
-  "description": "Leteo persistent memory hooks — session tracking, compaction recovery, and prompt capture",
+  "description": "Leteo persistent memory hooks — session tracking, compaction recovery, prompt capture, and passive capture",
   "hooks": {
     "SessionStart": [
       {
@@ -32,6 +32,30 @@
             "type": "command",
             "command": "leteo hook user-prompt-submit",
             "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "leteo hook subagent-stop",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "leteo hook session-stop",
+            "timeout": 3,
+            "async": true
           }
         ]
       }
