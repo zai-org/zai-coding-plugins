@@ -8,10 +8,12 @@ a compaction is recovered from rather than survived.
 
 ## Install
 
-```text
-zcode plugins marketplace add zai-org/zai-coding-plugins
-zcode plugins install leteo@zai-coding-plugins
-```
+Adding a marketplace is a desktop action rather than a command: **Settings ->
+Plugins -> Create -> Add marketplace**, pointing at `zai-org/zai-coding-plugins`.
+Then install `leteo` from the list it shows.
+
+The CLI does not add marketplaces -- `zcode plugins` lists and enables what is
+already installed. Checked against `zcode 0.16.5`.
 
 **The plugin carries configuration, not the binary.** Install `leteo` first, or
 the MCP entry and every hook here are commands that are not on `PATH`:
