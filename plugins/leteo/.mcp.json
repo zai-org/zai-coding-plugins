@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "leteo": {
+      "type": "stdio",
+      "command": "leteo",
+      "args": ["mcp", "--tools=agent"]
+    }
+  }
+}

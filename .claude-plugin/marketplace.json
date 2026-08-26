@@ -19,6 +19,12 @@
       "source": "./plugins/glm-plan-bug",
       "category": "development",
       "description": "Submit case feedback and bug reports for GLM Coding Plan service."
+    },
+    {
+      "name": "leteo",
+      "source": "./plugins/leteo",
+      "category": "development",
+      "description": "Persistent memory for coding agents: local-first, one binary over one SQLite database. Sessions, prompts and decisions survive compaction and restart."
     }
   ]
 }

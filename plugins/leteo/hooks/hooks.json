@@ -1,0 +1,40 @@
+{
+  "description": "Leteo persistent memory hooks — session tracking, compaction recovery, and prompt capture",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "leteo hook session-start",
+            "timeout": 10,
+            "statusMessage": "Loading Leteo memory..."
+          }
+        ]
+      },
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "leteo hook post-compaction",
+            "timeout": 10,
+            "statusMessage": "Recovering Leteo context after compaction..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "leteo hook user-prompt-submit",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
