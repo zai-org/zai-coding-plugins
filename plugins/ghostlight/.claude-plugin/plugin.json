@@ -1,0 +1,17 @@
+{
+  "name": "ghostlight",
+  "version": "1.0.0",
+  "description": "Governed, semantic tools for driving the user's real browser: navigate, inspect, find, click, fill, type, screenshot, record. Local by construction, with optional policy and audit.",
+  "author": {
+    "name": "sylin-org",
+    "url": "https://github.com/sylin-org"
+  },
+  "homepage": "https://sylin.org/ghostlight/",
+  "mcpServers": {
+    "ghostlight": {
+      "command": "npx",
+      "args": ["-y", "ghostlight"],
+      "env": {}
+    }
+  }
+}
