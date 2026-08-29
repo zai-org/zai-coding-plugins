@@ -19,6 +19,12 @@
       "source": "./plugins/glm-plan-bug",
       "category": "development",
       "description": "Submit case feedback and bug reports for GLM Coding Plan service."
+    },
+    {
+      "name": "ghostlight",
+      "source": "./plugins/ghostlight",
+      "category": "development",
+      "description": "Governed, semantic browser control for coding agents."
     }
   ]
 }
