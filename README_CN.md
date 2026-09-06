@@ -10,6 +10,7 @@ Claude Code 插件集合，旨在提升编程效率和提供 GLM Coding Plan 相
 |---------------------|------------------------------------|
 | **glm-plan-usage**  | 查询 GLM Coding Plan 的配额和使用统计        |
 | **glm-plan-bug**    | 提交 GLM Coding Plan 的反馈和问题报告        |
+| **aeon**            | 搭建并运行你自己的 Aeon 自主智能体实例          |
 
 **注意:** **glm-plan-bug** 会总结您当前对话的上下文信息以帮助定位问题，若不想上报信息，请勿主动使用此插件。
 
