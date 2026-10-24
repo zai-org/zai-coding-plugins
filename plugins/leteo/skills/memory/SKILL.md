@@ -157,7 +157,10 @@ keep, `mem_consolidate` writes one replacement and records a judged `supersedes`
 relation from it to every source in a single transaction. The sources stop
 appearing in search and context but stay readable by id with
 `mem_get_observation`. For a single better revision, `mem_update` or a new save
-under the same `topic_key` is the smaller move.
+under the same `topic_key` is the smaller move; to correct one span of a body
+without rewriting the rest, `mem_update` takes `find` and `replace`, and a
+`find` that is absent or matches more than once is refused with
+`edit_not_found` or `edit_ambiguous`.
 
 ## WHEN A MEMORY COMES ROUND FOR A REREAD
 
@@ -229,17 +232,17 @@ it", or the same in whatever language the user writes in:
    and try the same idea in the language the store holds before concluding a
    thing was never saved.
 3. `mem_get_observation` for the whole text once something looks right. The
-   context is an index, not the memories themselves: the pinned ones and the
-   newest few open with the first three hundred characters and everything
-   under `Also remembered` is a title alone. Every entry carries its `#id`, and
-   that is what to fetch by.
+   block a session opens with is an index, not the memories themselves: every
+   entry in it, the pinned ones included, is a title alone. `mem_context` gives
+   its newest few a short preview, marked `content_truncated` when it was cut.
+   Every entry carries its `#id`, and that is what to fetch by.
 
-   Assume the answer is past the cut. A memory here runs to about two thousand
-   characters, and the names, paths, numbers and error strings — the part
-   written to be worth keeping — are almost all beyond the first three hundred.
-   A trailing `...` marks a body that was cut. Fetch before answering from a
-   preview; guessing from one is how a version number turns into the wrong
-   version number.
+   Assume the answer is not in what you were handed. A memory here runs to
+   about two thousand characters, and the names, paths, numbers and error
+   strings — the part written to be worth keeping — are in the body, never in
+   a title and rarely in a preview. Fetch before answering from either;
+   guessing from one is how a version number turns into the wrong version
+   number.
 
 Search proactively too: before starting something that may have been done
 before, when the user names a topic you have no context on, and on their first
