@@ -1,0 +1,11 @@
+{
+  "name": "leteo",
+  "description": "Persistent memory for AI coding agents. Survives across sessions and compactions.",
+  "version": "0.4.2",
+  "author": {
+    "name": "Alexis Sanabria Lopez"
+  },
+  "homepage": "https://github.com/asanabrial/leteo",
+  "repository": "https://github.com/asanabrial/leteo",
+  "license": "MIT"
+}
