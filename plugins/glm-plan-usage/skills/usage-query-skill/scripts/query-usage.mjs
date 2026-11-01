@@ -40,13 +40,14 @@ let quotaLimitUrl;
 // Extract the base domain from ANTHROPIC_BASE_URL
 const parsedBaseUrl = new URL(baseUrl);
 const baseDomain = `${parsedBaseUrl.protocol}//${parsedBaseUrl.host}`;
+const baseHostname = parsedBaseUrl.protocol === 'https:' ? parsedBaseUrl.hostname : '';
 
-if (baseUrl.includes('api.z.ai')) {
+if (baseHostname === 'api.z.ai') {
   platform = 'ZAI';
   modelUsageUrl = `${baseDomain}/api/monitor/usage/model-usage`;
   toolUsageUrl = `${baseDomain}/api/monitor/usage/tool-usage`;
   quotaLimitUrl = `${baseDomain}/api/monitor/usage/quota/limit`;
-} else if (baseUrl.includes('open.bigmodel.cn') || baseUrl.includes('dev.bigmodel.cn')) {
+} else if (baseHostname === 'open.bigmodel.cn' || baseHostname === 'dev.bigmodel.cn') {
   platform = 'ZHIPU';
   modelUsageUrl = `${baseDomain}/api/monitor/usage/model-usage`;
   toolUsageUrl = `${baseDomain}/api/monitor/usage/tool-usage`;

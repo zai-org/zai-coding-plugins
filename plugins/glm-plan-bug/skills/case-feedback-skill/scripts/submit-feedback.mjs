@@ -81,11 +81,12 @@ let feedbackUrl;
 // Extract the base domain from ANTHROPIC_BASE_URL
 const parsedBaseUrl = new URL(baseUrl);
 const baseDomain = `${parsedBaseUrl.protocol}//${parsedBaseUrl.host}`;
+const baseHostname = parsedBaseUrl.protocol === 'https:' ? parsedBaseUrl.hostname : '';
 
-if (baseUrl.includes('api.z.ai')) {
+if (baseHostname === 'api.z.ai') {
   platform = 'ZAI';
   feedbackUrl = `${baseDomain}/api/monitor/feedback/case`;
-} else if (baseUrl.includes('open.bigmodel.cn') || baseUrl.includes('dev.bigmodel.cn')) {
+} else if (baseHostname === 'open.bigmodel.cn' || baseHostname === 'dev.bigmodel.cn') {
   platform = 'ZHIPU';
   feedbackUrl = `${baseDomain}/api/monitor/feedback/case`;
 } else {
